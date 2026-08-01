@@ -199,6 +199,41 @@ var roles = new List<Role>
             await context.SaveChangesAsync();
         }
 
+        // Seed baseline permissions for the standard user role so authenticated users can access their own profile,
+        // gyms, and session management endpoints without needing elevated admin privileges.
+        var userRole = await context.Roles.FirstOrDefaultAsync(r => r.Name == "User");
+        if (userRole != null)
+        {
+            var baselinePermissions = new[]
+            {
+                "Auth.Logout",
+                "Auth.LogoutAll",
+                "Auth.ManageSessions",
+                "Users.Read",
+                "Gyms.Read"
+            };
+
+            var existingPermissionIds = await context.RolePermissions
+                .Where(rolePermission => rolePermission.RoleId == userRole.Id)
+                .Select(rolePermission => rolePermission.PermissionId)
+                .ToListAsync();
+
+            var permissionsToAssign = await context.Permissions
+                .Where(permission => baselinePermissions.Contains(permission.Name) && !existingPermissionIds.Contains(permission.Id))
+                .ToListAsync();
+
+            if (permissionsToAssign.Count > 0)
+            {
+                await context.RolePermissions.AddRangeAsync(
+                    permissionsToAssign.Select(permission => new RolePermission
+                    {
+                        RoleId = userRole.Id,
+                        PermissionId = permission.Id
+                    }));
+                await context.SaveChangesAsync();
+            }
+        }
+
         // Seed default admin user
         if (!await context.Users.AnyAsync())
         {

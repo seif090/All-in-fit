@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using AllInFit.Domain.Entities.Identity;
+using AllInFit.Shared.Constants;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -27,6 +28,20 @@ public sealed class JwtProvider : IJwtProvider
             new("accountType", user.AccountType.ToString()),
             new("isVerified", user.IsEmailVerified.ToString())
         };
+
+        foreach (var role in user.UserRoles.Select(userRole => userRole.Role).Where(role => role is not null).DistinctBy(role => role!.Name))
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role!.Name));
+
+            foreach (var permission in role.RolePermissions
+                         .Select(rolePermission => rolePermission.Permission)
+                         .Where(permission => permission is not null)
+                         .Select(permission => permission!.Name)
+                         .Distinct(StringComparer.OrdinalIgnoreCase))
+            {
+                claims.Add(new Claim(Claims.Permission, permission));
+            }
+        }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SecretKey));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

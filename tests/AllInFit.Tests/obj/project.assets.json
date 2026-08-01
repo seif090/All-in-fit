@@ -11516,11 +11516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\AllInFit.Tests.csproj",
+      "projectUniqueName": "c:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\AllInFit.Tests.csproj",
       "projectName": "AllInFit.Tests",
-      "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\AllInFit.Tests.csproj",
+      "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\AllInFit.Tests.csproj",
       "packagesPath": "C:\\Users\\seaif\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\obj\\",
+      "outputPath": "c:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11551,14 +11551,14 @@
             "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Infrastructure\\AllInFit.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Infrastructure\\AllInFit.Infrastructure.csproj"
             },
-            "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Persistence\\AllInFit.Persistence.csproj": {
-              "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Persistence\\AllInFit.Persistence.csproj"
+            "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Persistence\\AllInFit.Persistence.csproj": {
+              "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Persistence\\AllInFit.Persistence.csproj"
             },
             "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Presentation\\AllInFit.Presentation.csproj": {
               "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Presentation\\AllInFit.Presentation.csproj"
             },
-            "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
-              "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
+            "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
+              "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
             }
           }
         }

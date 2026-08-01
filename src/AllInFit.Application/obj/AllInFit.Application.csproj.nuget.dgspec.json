@@ -36,8 +36,8 @@
               "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj": {
                 "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj"
               },
-              "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
-                "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
+              "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
+                "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
               }
             }
           }
@@ -167,14 +167,14 @@
         }
       }
     },
-    "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
+    "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
         "projectName": "AllInFit.Shared",
-        "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
+        "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
         "packagesPath": "C:\\Users\\seaif\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\obj\\",
+        "outputPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,6 +1,8 @@
 ﻿using AllInFit.Application.Commands.Auth;
 using AllInFit.Application.DTOs.Auth;
 using AllInFit.Presentation.Controllers;
+using AllInFit.Presentation.Filters;
+using AllInFit.Shared.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -122,6 +124,7 @@ public sealed class AuthController : ApiControllerBase
     /// <summary>Logs out all devices and sessions for the current user.</summary>
     [HttpPost("logout-all")]
     [Authorize]
+    [PermissionAuthorize(Permissions.AuthLogoutAll)]
     public async Task<IActionResult> LogoutAllDevices(CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new LogoutAllDevicesCommand(CurrentUserId ?? Guid.Empty), cancellationToken);

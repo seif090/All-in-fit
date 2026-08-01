@@ -2,6 +2,8 @@
 using AllInFit.Application.Queries.Gyms;
 using AllInFit.Domain.Entities.Gyms;
 using AllInFit.Presentation.Controllers;
+using AllInFit.Presentation.Filters;
+using AllInFit.Shared.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +19,8 @@ public sealed class GymsController : ApiControllerBase
 
     /// <summary>Returns a gym by id.</summary>
     [HttpGet("{gymId:guid}")]
-    [AllowAnonymous]
+    [CachedResponse(60)]
+    [PermissionAuthorize(Permissions.GymsRead)]
     public async Task<IActionResult> GetById(Guid gymId, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetGymQuery(gymId), cancellationToken);

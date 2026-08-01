@@ -1,5 +1,7 @@
 ﻿using AllInFit.Application.Queries.Users;
 using AllInFit.Presentation.Controllers;
+using AllInFit.Presentation.Filters;
+using AllInFit.Shared.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +17,8 @@ public sealed class UsersController : ApiControllerBase
 
     /// <summary>Returns the currently authenticated user's profile.</summary>
     [HttpGet("me")]
+    [CachedResponse(60)]
+    [PermissionAuthorize(Permissions.UsersRead)]
     public async Task<IActionResult> GetMe(CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetCurrentUserQuery(CurrentUserId ?? Guid.Empty), cancellationToken);
@@ -23,6 +27,8 @@ public sealed class UsersController : ApiControllerBase
 
     /// <summary>Returns a user profile by id.</summary>
     [HttpGet("{userId:guid}")]
+    [CachedResponse(60)]
+    [PermissionAuthorize(Permissions.UsersRead)]
     public async Task<IActionResult> GetById(Guid userId, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetUserQuery(userId), cancellationToken);

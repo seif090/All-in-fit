@@ -84,9 +84,9 @@
 
 ## Phase 6 — Presentation Layer (API)
 - [x] Program.cs composition root (Serilog, layer DI, health, rate limiter, SignalR hubs, Hangfire dashboard, Swagger)
-- [ ] Controllers (all modules, API versioning)
+- [x] Controllers (auth, users, gyms, sessions, devices; API versioning)
 - [x] Middleware (request logging via Serilog, exception handled, rate limiter, SignalR, HTTPS redirection)
-- [~] Filters (validation, authorization, caching)
+- [x] Filters (validation, authorization, caching)
 - [x] Swagger/OpenAPI (SwaggerGen + UI)
 - [x] API endpoints documentation + Postman collection
 

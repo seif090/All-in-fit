@@ -8,6 +8,7 @@ public static class Permissions
     public const string AuthRefreshToken = "Auth.RefreshToken";
     public const string AuthLogout = "Auth.Logout";
     public const string AuthLogoutAll = "Auth.LogoutAll";
+    public const string AuthManageSessions = "Auth.ManageSessions";
 
     // Users
     public const string UsersRead = "Users.Read";
@@ -146,7 +147,7 @@ public static class Permissions
 
     public static readonly string[] All = new[]
     {
-        AuthLogin, AuthRegister, AuthRefreshToken, AuthLogout, AuthLogoutAll,
+        AuthLogin, AuthRegister, AuthRefreshToken, AuthLogout, AuthLogoutAll, AuthManageSessions,
         UsersRead, UsersCreate, UsersUpdate, UsersDelete, UsersManageRoles,
         RolesRead, RolesCreate, RolesUpdate, RolesDelete, RolesManagePermissions,
         GymsRead, GymsCreate, GymsUpdate, GymsDelete, GymsManageBranches, GymsManageMemberships, GymsManageSchedules,

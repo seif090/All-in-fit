@@ -1,4 +1,6 @@
 using AllInFit.Application.Queries.Auth;
+using AllInFit.Presentation.Filters;
+using AllInFit.Shared.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,8 @@ public sealed class SessionsController : ApiControllerBase
     public SessionsController(IMediator mediator) => _mediator = mediator;
 
     [HttpGet]
+    [CachedResponse(30)]
+    [PermissionAuthorize(Permissions.AuthManageSessions)]
     public async Task<IActionResult> GetMySessions(CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(new GetMySessionsQuery(CurrentUserId ?? Guid.Empty), cancellationToken);
