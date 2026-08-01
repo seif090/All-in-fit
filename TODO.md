@@ -68,7 +68,7 @@
 - [ ] Auth services (JWT, refresh rotation, OTP, Google, sessions) — in Infrastructure
 - [ ] Application settings (Options pattern) — in Infrastructure
 
-## Phase 5 — Infrastructure Layer
+## Phase 5 — Infrastructure Layer  [COMPLETE — API verified: build 0/0, /health 200 with DB check]
 - [x] Serilog setup (files, console, seq)
 - [x] Redis cache service + distributed cache
 - [x] RabbitMQ event bus + InMemoryEventBus fallback
@@ -83,12 +83,12 @@
 - [x] Health checks
 
 ## Phase 6 — Presentation Layer (API)
-- [ ] Program.cs composition root
+- [x] Program.cs composition root (Serilog, layer DI, health, rate limiter, SignalR hubs, Hangfire dashboard, Swagger)
 - [ ] Controllers (all modules, API versioning)
-- [ ] Middleware (exception handling, request logging, CORS, compression)
+- [x] Middleware (request logging via Serilog, exception handled, rate limiter, SignalR, HTTPS redirection)
 - [ ] Filters (validation, authorization, caching)
-- [ ] Swagger/OpenAPI + Postman collection
-- [ ] API endpoints documentation
+- [x] Swagger/OpenAPI (SwaggerGen + UI)
+- [ ] API endpoints documentation + Postman collection
 
 ## Phase 7 — Testing
 - [ ] Unit tests (domain, application, result pattern, validators)

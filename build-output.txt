@@ -1,0 +1,19 @@
+﻿  Determining projects to restore...
+  Restored C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\AllInFit.Domain.csproj (in 700 ms).
+  Restored c:\Users\seaif\Desktop\All in fit\src\AllInFit.Application\AllInFit.Application.csproj (in 700 ms).
+  Restored C:\Users\seaif\Desktop\All in fit\src\AllInFit.Persistence\AllInFit.Persistence.csproj (in 789 ms).
+  Restored c:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure\AllInFit.Infrastructure.csproj (in 931 ms).
+  Restored c:\Users\seaif\Desktop\All in fit\src\AllInFit.Presentation\AllInFit.Presentation.csproj (in 932 ms).
+  1 of 6 projects are up-to-date for restore.
+  AllInFit.Shared -> C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\bin\Debug\net9.0\AllInFit.Shared.dll
+  AllInFit.Domain -> C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\bin\Debug\net9.0\AllInFit.Domain.dll
+  AllInFit.Application -> c:\Users\seaif\Desktop\All in fit\src\AllInFit.Application\bin\Debug\net9.0\AllInFit.Application.dll
+  AllInFit.Infrastructure -> c:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure\bin\Debug\net9.0\AllInFit.Infrastructure.dll
+  AllInFit.Persistence -> C:\Users\seaif\Desktop\All in fit\src\AllInFit.Persistence\bin\Debug\net9.0\AllInFit.Persistence.dll
+  AllInFit.Presentation -> c:\Users\seaif\Desktop\All in fit\src\AllInFit.Presentation\bin\Debug\net9.0\AllInFit.Presentation.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:32.01

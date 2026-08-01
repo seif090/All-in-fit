@@ -1,4 +1,5 @@
-﻿using AllInFit.Infrastructure.Auth;
+﻿using AllInFit.Application.Ports;
+using AllInFit.Infrastructure.Auth;
 using AllInFit.Infrastructure.Caching;
 using AllInFit.Infrastructure.Maps;
 using AllInFit.Infrastructure.Messaging;
@@ -37,6 +38,8 @@ public static class DependencyInjection
 
         // ========== Auth ==========
         services.AddScoped<IJwtProvider, JwtProvider>();
+        services.AddScoped<IPasswordHasher, Pbkdf2PasswordHasher>();
+        services.AddScoped<ITokenService, TokenService>();
 
         // ========== Caching ==========
         services.AddMemoryCache();

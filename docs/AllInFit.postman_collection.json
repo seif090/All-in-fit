@@ -1,0 +1,248 @@
+﻿{
+    "variable":  [
+                     {
+                         "key":  "baseUrl",
+                         "type":  "string",
+                         "value":  "http://localhost:5199"
+                     },
+                     {
+                         "key":  "token",
+                         "type":  "string",
+                         "value":  ""
+                     }
+                 ],
+    "info":  {
+                 "description":  "Enterprise Health \u0026 Fitness SaaS platform - backend API collection.",
+                 "name":  "All In Fit API",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "item":  [
+                 {
+                     "name":  "Auth",
+                     "item":  [
+                                  {
+                                      "name":  "Register",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\\n  \"email\": \"user@example.com\",\\n  \"password\": \"Str0ng!Pass\",\\n  \"firstName\": \"John\",\\n  \"lastName\": \"Doe\"\\n}",
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/api/v1/auth/register",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "auth",
+                                                                               "register"
+                                                                           ]
+                                                              },
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Login",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\\n  \"email\": \"user@example.com\",\\n  \"password\": \"Str0ng!Pass\"\\n}",
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/api/v1/auth/login",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "auth",
+                                                                               "login"
+                                                                           ]
+                                                              },
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Refresh Token",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\\n  \"refreshToken\": \"PASTE_REFRESH_TOKEN_HERE\"\\n}",
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/api/v1/auth/refresh",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "auth",
+                                                                               "refresh"
+                                                                           ]
+                                                              },
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Users",
+                     "item":  [
+                                  {
+                                      "name":  "Get Current User",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/api/v1/users/me",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "users",
+                                                                               "me"
+                                                                           ]
+                                                              }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Get User By Id",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/api/v1/users/{{userId}}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "users",
+                                                                               "{{userId}}"
+                                                                           ]
+                                                              }
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Gyms",
+                     "item":  [
+                                  {
+                                      "name":  "Get Gym",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/api/v1/gyms/{{gymId}}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "gyms",
+                                                                               "{{gymId}}"
+                                                                           ]
+                                                              }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Create Gym",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\\n  \"name\": \"Iron Temple Gym\",\\n  \"legalName\": \"Iron Temple LLC\",\\n  \"logoUrl\": null,\\n  \"description\": \"A premium strength gym.\",\\n  \"website\": \"https://irontemple.example\"\\n}",
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/api/v1/gyms",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "gyms"
+                                                                           ]
+                                                              },
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Health",
+                     "item":  [
+                                  {
+                                      "name":  "Health Check",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/health",
+                                                                  "path":  [
+                                                                               "health"
+                                                                           ]
+                                                              }
+                                                  }
+                                  },
+                                  {
+                                      "name":  "Swagger JSON",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "raw":  "{{baseUrl}}/swagger/v1/swagger.json",
+                                                                  "path":  [
+                                                                               "swagger",
+                                                                               "v1",
+                                                                               "swagger.json"
+                                                                           ]
+                                                              }
+                                                  }
+                                  }
+                              ]
+                 }
+             ],
+    "auth":  {
+                 "bearer":  [
+                                {
+                                    "key":  "token",
+                                    "type":  "string",
+                                    "value":  "{{token}}"
+                                }
+                            ],
+                 "type":  "bearer"
+             }
+}

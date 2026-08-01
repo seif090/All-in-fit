@@ -374,11 +374,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Application\\AllInFit.Application.csproj",
+      "projectUniqueName": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Application\\AllInFit.Application.csproj",
       "projectName": "AllInFit.Application",
-      "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Application\\AllInFit.Application.csproj",
+      "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Application\\AllInFit.Application.csproj",
       "packagesPath": "C:\\Users\\seaif\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Application\\obj\\",
+      "outputPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

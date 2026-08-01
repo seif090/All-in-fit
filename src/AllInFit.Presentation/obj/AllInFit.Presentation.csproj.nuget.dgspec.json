@@ -510,6 +510,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Asp.Versioning.Mvc": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "Asp.Versioning.Mvc.ApiExplorer": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
             "AspNetCore.HealthChecks.Rabbitmq": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -521,6 +529,10 @@
             "AspNetCore.HealthChecks.SqlServer": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.18, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
