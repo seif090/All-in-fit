@@ -1,0 +1,11 @@
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\bin\Debug\net9.0\AllInFit.Shared.deps.json
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\bin\Debug\net9.0\AllInFit.Shared.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\bin\Debug\net9.0\AllInFit.Shared.pdb
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.AssemblyInfoInputs.cache
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.AssemblyInfo.cs
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.csproj.CoreCompileInputs.cache
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\refint\AllInFit.Shared.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.pdb
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\ref\AllInFit.Shared.dll

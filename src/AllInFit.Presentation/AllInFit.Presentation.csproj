@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="9.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="9.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.18" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllInFit.Application\AllInFit.Application.csproj" />
+    <ProjectReference Include="..\AllInFit.Infrastructure\AllInFit.Infrastructure.csproj" />
+    <ProjectReference Include="..\AllInFit.Persistence\AllInFit.Persistence.csproj" />
+    <ProjectReference Include="..\AllInFit.Domain\AllInFit.Domain.csproj" />
+    <ProjectReference Include="..\AllInFit.Shared\AllInFit.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AllInFit.Application/AllInFit.Application.csproj" />
+    <Project Path="src/AllInFit.Domain/AllInFit.Domain.csproj" />
+    <Project Path="src/AllInFit.Infrastructure/AllInFit.Infrastructure.csproj" />
+    <Project Path="src/AllInFit.Persistence/AllInFit.Persistence.csproj" />
+    <Project Path="src/AllInFit.Presentation/AllInFit.Presentation.csproj" />
+    <Project Path="src/AllInFit.Shared/AllInFit.Shared.csproj" />
+  </Folder>
+</Solution>

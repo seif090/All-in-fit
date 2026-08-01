@@ -1,0 +1,12 @@
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\bin\Debug\net9.0\AllInFit.Domain.deps.json
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\bin\Debug\net9.0\AllInFit.Domain.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\bin\Debug\net9.0\AllInFit.Domain.pdb
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.AssemblyInfoInputs.cache
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.AssemblyInfo.cs
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.csproj.CoreCompileInputs.cache
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\refint\AllInFit.Domain.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.pdb
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\ref\AllInFit.Domain.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.csproj.AssemblyReference.cache

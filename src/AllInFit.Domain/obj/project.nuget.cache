@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "bNYCKcr9xh8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\seaif\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
