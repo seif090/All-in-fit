@@ -4,7 +4,7 @@ namespace AllInFit.Domain.Specifications;
 
 public sealed class UserByEmailSpecification : BaseSpecification<User>
 {
-    public UserByEmailSpecification(string email) : base(u => u.Email.ToLower() == email.ToLower())
+    public UserByEmailSpecification(string email) : base(u => string.Equals(u.Email, email, StringComparison.OrdinalIgnoreCase))
     {
         AddInclude(u => u.UserRoles);
         AddInclude("UserRoles.Role");

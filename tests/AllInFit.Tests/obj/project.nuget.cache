@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GqKcNJtHVTg=",
+  "dgSpecHash": "Ou1IXc0uklo=",
   "success": true,
-  "projectFilePath": "c:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\AllInFit.Tests.csproj",
+  "projectFilePath": "C:\\Users\\seaif\\Desktop\\All in fit\\tests\\AllInFit.Tests\\AllInFit.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\seaif\\.nuget\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
     "C:\\Users\\seaif\\.nuget\\packages\\asp.versioning.http\\8.1.0\\asp.versioning.http.8.1.0.nupkg.sha512",
