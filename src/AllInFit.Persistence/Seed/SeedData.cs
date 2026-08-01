@@ -206,7 +206,7 @@ var adminUser = new User(
                 "admin@allinfit.com",
                 "Super",
                 "Admin",
-                "$2a$11$K4YfGqJ1e4YHIpQqN5o5Y.5Q5Q5Q5Q5Q5Q5Q5Q5Q5Q5Q5Q5Q5Q5Q" // placeholder - hash in migration
+                "$2a$11$XkQ4W1kO9nHc7pycZPM5pOZ2P8eZcE4YV6gNqQhGJ8QXWvBz0pO0q" // placeholder - hash in migration
             );
             adminUser.VerifyEmail();
             await context.Users.AddAsync(adminUser);

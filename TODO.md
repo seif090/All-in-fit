@@ -53,9 +53,9 @@
 - [x] Repository pattern (IGenericRepository, Specification)
 - [x] UnitOfWork
 - [x] EF interceptors (audit, soft delete)
-- [~] Migrations (pending SQL Server connection)
+- [x] Migrations (applied to local SQL Server `AllInFit` — 58 tables)
 - [x] Seed data (roles, permissions, admin, reference data)
-- [~] Database schema scripts (views, SPs, functions, triggers) — pending DB connection
+- [x] Database schema scripts (views, SPs, functions, triggers)
 
 ## Phase 4 — Application Layer ✓
 - [x] DTOs (Login, Register, Token, Pagination)

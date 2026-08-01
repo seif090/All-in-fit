@@ -8,7 +8,9 @@ public sealed class AvailableProductsSpecification : BaseSpecification<Product>
         : base(p =>
             p.IsAvailable &&
             !p.IsDeleted &&
-            (string.IsNullOrWhiteSpace(searchTerm) || p.Name.Contains(searchTerm) || p.Description!.Contains(searchTerm)) &&
+            (string.IsNullOrWhiteSpace(searchTerm) ||
+             p.Name.Contains(searchTerm!) ||
+             (searchTerm != null && !string.IsNullOrEmpty(p.Description) && p.Description.Contains(searchTerm))) &&
             (categoryId == null || p.CategoryId == categoryId) &&
             (minPrice == null || p.Price >= minPrice) &&
             (maxPrice == null || p.Price <= maxPrice))
@@ -21,6 +23,6 @@ public sealed class ProductByIdSpecification : BaseSpecification<Product>
 {
     public ProductByIdSpecification(Guid productId) : base(p => p.Id == productId && !p.IsDeleted)
     {
-        AddInclude(p => p.Brand);
+        AddInclude(nameof(Product.Brand));
     }
 }

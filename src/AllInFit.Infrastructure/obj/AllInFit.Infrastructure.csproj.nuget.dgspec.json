@@ -224,6 +224,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AWSSDK.S3": {
+              "target": "Package",
+              "version": "[3.7.411.1, )"
+            },
             "AspNetCore.HealthChecks.Rabbitmq": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -232,9 +236,29 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.23.0, )"
+            },
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.26.1, )"
+            },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.8.17, )"
+            },
             "Hangfire.SqlServer": {
               "target": "Package",
               "version": "[1.8.17, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.17.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -247,6 +271,10 @@
             "Microsoft.Extensions.Caching.StackExchangeRedis": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Serilog": {
               "target": "Package",
@@ -279,6 +307,14 @@
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.8.22, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[46.2.1, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[7.5.0, )"
             }
           },
           "imports": [

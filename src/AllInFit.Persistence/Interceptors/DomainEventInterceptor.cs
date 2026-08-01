@@ -27,7 +27,14 @@ public sealed class DomainEventInterceptor : SaveChangesInterceptor
             {
                 foreach (var domainEvent in entity.DomainEvents.ToList())
                 {
-                    await _publisher.Publish(domainEvent, cancellationToken);
+                    var notificationType = typeof(DomainEventNotification<>).MakeGenericType(domainEvent.GetType());
+                    var notification = Activator.CreateInstance(notificationType, domainEvent);
+
+                    if (notification is INotification source)
+                    {
+                        await _publisher.Publish(source, cancellationToken);
+                    }
+
                     entity.ClearDomainEvents();
                 }
             }

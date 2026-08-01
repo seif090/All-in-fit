@@ -18,5 +18,4 @@ public sealed class Review : SoftDeleteEntity
     public Guid? MealPlanId { get; set; }
     public bool IsApproved { get; set; }
     public bool IsVerifiedPurchase { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

@@ -61,7 +61,7 @@ public sealed class User : SoftDeleteEntity
     public void AddRole(Role role) { if (!_userRoles.Any(ur => ur.RoleId == role.Id)) _userRoles.Add(new UserRole { UserId = Id, RoleId = role.Id }); }
     public void RemoveRole(Role role) { var ur = _userRoles.FirstOrDefault(x => x.RoleId == role.Id); if (ur != null) _userRoles.Remove(ur); }
     public bool HasRole(string name) => _userRoles.Any(ur => ur.Role?.Name == name);
-    public bool HasPermission(string perm) => _userRoles.Any(ur => ur.Role?.RolePermissions.Any(rp => rp.Permission.Name == perm) == true);
+    public bool HasPermission(string perm) => _userRoles.Any(ur => ur.Role != null && ur.Role.RolePermissions.Any(rp => rp.Permission != null && rp.Permission.Name == perm));
     public void AddDevice(UserDevice device) { var existing = _devices.FirstOrDefault(d => d.DeviceId == device.DeviceId); if (existing != null) _devices.Remove(existing); _devices.Add(device); }
     public void RemoveDevice(string deviceId) { var d = _devices.FirstOrDefault(x => x.DeviceId == deviceId); if (d != null) _devices.Remove(d); }
     public void Deactivate() { IsActive = false; DeletedAt = DateTime.UtcNow; }
