@@ -3,6 +3,9 @@ using AllInFit.Infrastructure.Caching;
 using AllInFit.Infrastructure.Maps;
 using AllInFit.Infrastructure.Messaging;
 using AllInFit.Infrastructure.Notifications;
+using AllInFit.Infrastructure.Jobs;
+using AllInFit.Infrastructure.RateLimiting;
+using AllInFit.Infrastructure.Realtime;
 using AllInFit.Infrastructure.Payments;
 using AllInFit.Infrastructure.Storage;
 using AllInFit.Shared.Contracts;
@@ -82,6 +85,10 @@ public static class DependencyInjection
         services.AddScoped<IPushNotificationService, FirebasePushNotificationService>();
 
         // ========== File Storage ==========
+        // The storage adapters take the concrete StorageOptions in their constructor;
+        // register it as a resolvable service backed by the IOptions binding.
+        services.AddScoped(sp => sp.GetRequiredService<IOptions<StorageOptions>>().Value);
+
         var storageOptions = configuration.GetSection(StorageOptions.SectionName).Get<StorageOptions>() ?? new StorageOptions();
         switch (storageOptions.Provider)
         {
@@ -121,6 +128,15 @@ public static class DependencyInjection
 
         // ========== Maps (OpenStreetMap / Nominatim / OSRM / Overpass) ==========
         services.AddScoped<IMapService, OpenStreetMapService>();
+
+        // ========== Realtime (SignalR) ==========
+        services.AddRealtimeServices();
+
+        // ========== Rate Limiting ==========
+        services.AddRateLimiting(configuration);
+
+        // ========== Hangfire Background Jobs ==========
+        services.AddHangfireJobs(configuration);
 
         return services;
     }

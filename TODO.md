@@ -69,18 +69,18 @@
 - [ ] Application settings (Options pattern) — in Infrastructure
 
 ## Phase 5 — Infrastructure Layer
-- [ ] Serilog setup (files, console, seq)
-- [ ] Redis cache service + distributed cache
-- [ ] RabbitMQ event bus
-- [ ] Hangfire jobs (scheduler, recurring)
-- [ ] SignalR hub (notifications, chat)
-- [ ] JWT provider (RS256)
-- [ ] Email/SMS/Push notification senders
-- [ ] File storage adapters (local, cloudinary, s3, azure)
-- [ ] Payment adapters (stripe, paymob, fawry, wallet)
-- [ ] Map adapters (nominatim, osrm, overpass)
-- [ ] Rate limiting
-- [ ] Health checks
+- [x] Serilog setup (files, console, seq)
+- [x] Redis cache service + distributed cache
+- [x] RabbitMQ event bus + InMemoryEventBus fallback
+- [x] Hangfire jobs (ExpiredMembershipJob, AppointmentReminderJob, WalletDailyDigestJob)
+- [x] SignalR hub (NotificationsHub, ChatHub)
+- [x] JWT provider (RS256)
+- [x] Email/SMS/Push notification senders (MailKit, Twilio, Firebase)
+- [x] File storage adapters (Local, Cloudinary, S3, Azure Blob)
+- [x] Payment adapters (Stripe, Paymob, Fawry, Wallet)
+- [x] Map adapters (Nominatim, OSRM, Overpass)
+- [x] Rate limiting
+- [x] Health checks
 
 ## Phase 6 — Presentation Layer (API)
 - [ ] Program.cs composition root

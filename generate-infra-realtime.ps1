@@ -1,5 +1,10 @@
 $base = "c:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure"
 
+# Ensure all target directories exist before writing files.
+foreach ($dir in @("$base\Realtime", "$base\Jobs", "$base\RateLimiting")) {
+    if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+}
+
 # =====================================================================
 # 1. SignalR Hubs — Notifications + Chat
 # =====================================================================
@@ -118,7 +123,7 @@ public static class ChatMessageMapper
 Write-Host "Created ChatHub.cs"
 
 # =====================================================================
-# 2. Hangfire Background Jobs
+# 2. Hangfire Options + Jobs (port-based, config-gated)
 # =====================================================================
 
 $jobOptions = @'
@@ -137,52 +142,63 @@ public sealed class HangfireOptions
 [System.IO.File]::WriteAllText("$base\Jobs\HangfireOptions.cs", $jobOptions, [System.Text.Encoding]::UTF8)
 Write-Host "Created HangfireOptions.cs"
 
+# --- ExpiredMembershipJob ---
 $expiredMembershipJob = @'
+using AllInFit.Application.Ports;
 using AllInFit.Domain.Entities.Gyms;
 using AllInFit.Domain.Enums;
-using AllInFit.Persistence.Data;
+using AllInFit.Domain.Specifications;
 
 namespace AllInFit.Infrastructure.Jobs;
 
 /// <summary>
-/// Daily sweep that flags expired gym memberships and releases any
-/// resources blocked by them.
+/// Daily sweep that flags expired gym memberships so business rules
+/// (access control, scheduling) can react accordingly.
 /// </summary>
 public sealed class ExpiredMembershipJob
 {
-    private readonly ApplicationDbContext _db;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public ExpiredMembershipJob(ApplicationDbContext db)
+    public ExpiredMembershipJob(IUnitOfWork unitOfWork)
     {
-        _db = db;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task RunAsync(CancellationToken cancellationToken = default)
     {
-        var now = DateTime.UtcNow;
-        var expired = _db.Set<GymMembership>()
-            .Where(m => m.Status == MembershipStatus.Active && m.EndDate <= now);
+        var repo = _unitOfWork.Repository<GymMembership>();
+        var expired = await repo.GetListBySpecificationAsync(
+            new ExpiredMembershipSpecification(DateTime.UtcNow), cancellationToken);
 
         foreach (var membership in expired)
         {
             membership.Status = MembershipStatus.Expired;
         }
 
-        await _db.SaveChangesAsync(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+    }
+}
+
+internal sealed class ExpiredMembershipSpecification : BaseSpecification<GymMembership>
+{
+    public ExpiredMembershipSpecification(DateTime now)
+        : base(m => m.Status == MembershipStatus.Active && m.EndDate <= now)
+    {
     }
 }
 '@
 [System.IO.File]::WriteAllText("$base\Jobs\ExpiredMembershipJob.cs", $expiredMembershipJob, [System.Text.Encoding]::UTF8)
 Write-Host "Created ExpiredMembershipJob.cs"
 
+# --- AppointmentReminderJob ---
 $reminderJob = @'
+using AllInFit.Application.Ports;
 using AllInFit.Domain.Entities.Appointments;
 using AllInFit.Domain.Entities.Notifications;
 using AllInFit.Domain.Enums;
-using AllInFit.Persistence.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+using AllInFit.Domain.Specifications;
 using AllInFit.Shared.Contracts;
+using Microsoft.Extensions.Logging;
 
 namespace AllInFit.Infrastructure.Jobs;
 
@@ -192,16 +208,16 @@ namespace AllInFit.Infrastructure.Jobs;
 /// </summary>
 public sealed class AppointmentReminderJob
 {
-    private readonly ApplicationDbContext _db;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IPushNotificationService _push;
     private readonly ILogger<AppointmentReminderJob> _logger;
 
     public AppointmentReminderJob(
-        ApplicationDbContext db,
+        IUnitOfWork unitOfWork,
         IPushNotificationService push,
         ILogger<AppointmentReminderJob> logger)
     {
-        _db = db;
+        _unitOfWork = unitOfWork;
         _push = push;
         _logger = logger;
     }
@@ -209,14 +225,11 @@ public sealed class AppointmentReminderJob
     public async Task RunAsync(CancellationToken cancellationToken = default)
     {
         var now = DateTime.UtcNow;
-        var windowStart = now.AddHours(1);
-        var windowEnd = now.AddHours(24);
+        var appointmentRepo = _unitOfWork.Repository<Appointment>();
+        var notificationRepo = _unitOfWork.Repository<Notification>();
 
-        var upcoming = await _db.Set<Appointment>()
-            .Where(a => a.Status == AppointmentStatus.Confirmed
-                        && a.StartTime >= windowStart
-                        && a.StartTime <= windowEnd)
-            .ToListAsync(cancellationToken);
+        var upcoming = await appointmentRepo.GetListBySpecificationAsync(
+            new UpcomingAppointmentSpecification(now.AddHours(1), now.AddHours(24)), cancellationToken);
 
         foreach (var appointment in upcoming)
         {
@@ -225,68 +238,89 @@ public sealed class AppointmentReminderJob
                 Id = Guid.NewGuid(),
                 UserId = appointment.UserId,
                 Title = "Upcoming Appointment",
-                Body = $"You have an appointment at {appointment.StartTime:yyyy-MM-dd HH:mm}.",
+                Body = $"You have an appointment at {appointment.ScheduledStart:yyyy-MM-dd HH:mm}.",
                 Type = NotificationType.Reminder,
                 IsRead = false,
                 IsSent = false,
                 Channel = "inapp"
             };
 
-            _db.Set<Notification>().Add(notification);
+            await notificationRepo.AddAsync(notification, cancellationToken);
 
             await _push.SendToDeviceAsync(
                 appointment.UserId.ToString(),
-                new PushNotificationPayload("Upcoming Appointment", notification.Body!)
-            );
+                new PushNotificationPayload("Upcoming Appointment", notification.Body!));
         }
 
-        await _db.SaveChangesAsync(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
         _logger.LogInformation("AppointmentReminderJob dispatched {Count} reminder(s)", upcoming.Count);
+    }
+}
+
+internal sealed class UpcomingAppointmentSpecification : BaseSpecification<Appointment>
+{
+    public UpcomingAppointmentSpecification(DateTime windowStart, DateTime windowEnd)
+        : base(a => a.Status == AppointmentStatus.Confirmed
+                    && a.ScheduledStart >= windowStart
+                    && a.ScheduledStart <= windowEnd)
+    {
     }
 }
 '@
 [System.IO.File]::WriteAllText("$base\Jobs\AppointmentReminderJob.cs", $reminderJob, [System.Text.Encoding]::UTF8)
 Write-Host "Created AppointmentReminderJob.cs"
 
-$rewardJob = @'
-using AllInFit.Domain.Entities.Gamification;
+# --- WalletDailyDigestJob (uses only public domain methods) ---
+$walletJob = @'
+using AllInFit.Application.Ports;
 using AllInFit.Domain.Entities.Wallet;
-using AllInFit.Domain.Enums;
-using AllInFit.Persistence.Data;
+using AllInFit.Domain.Specifications;
+using Microsoft.Extensions.Logging;
 
 namespace AllInFit.Infrastructure.Jobs;
 
 /// <summary>
-/// Processes reward-point redemption requests in a nightly batch.
+/// Produces a daily summary of all active wallet balances so finance
+/// teams can reconcile system state with payment providers.
 /// </summary>
-public sealed class RewardPointsJob
+public sealed class WalletDailyDigestJob
 {
-    private readonly ApplicationDbContext _db;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly ILogger<WalletDailyDigestJob> _logger;
 
-    public RewardPointsJob(ApplicationDbContext db)
+    public WalletDailyDigestJob(IUnitOfWork unitOfWork, ILogger<WalletDailyDigestJob> logger)
     {
-        _db = db;
+        _unitOfWork = unitOfWork;
+        _logger = logger;
     }
 
     public async Task RunAsync(CancellationToken cancellationToken = default)
     {
-        var pending = _db.Set<RewardPoint>()
-            .Where(r => r.Status == RewardPointStatus.Pending);
+        var repo = _unitOfWork.Repository<Wallet>();
+        var wallets = await repo.GetListBySpecificationAsync(new ActiveWalletsSpecification(), cancellationToken);
 
-        foreach (var point in pending)
-        {
-            point.Status = RewardPointStatus.Redeemed;
-        }
+        var totalBalance = wallets.Sum(w => w.Balance);
+        var totalRewardPoints = wallets.Sum(w => w.RewardPointsBalance);
 
-        await _db.SaveChangesAsync(cancellationToken);
+        _logger.LogInformation(
+            "WalletDailyDigestJob: {WalletCount} active wallets, total balance {TotalBalance}, total reward points {TotalRewardPoints}",
+            wallets.Count, totalBalance, totalRewardPoints);
+    }
+}
+
+internal sealed class ActiveWalletsSpecification : BaseSpecification<Wallet>
+{
+    public ActiveWalletsSpecification()
+        : base(w => w.IsActive)
+    {
     }
 }
 '@
-[System.IO.File]::WriteAllText("$base\Jobs\RewardPointsJob.cs", $rewardJob, [System.Text.Encoding]::UTF8)
-Write-Host "Created RewardPointsJob.cs"
+[System.IO.File]::WriteAllText("$base\Jobs\WalletDailyDigestJob.cs", $walletJob, [System.Text.Encoding]::UTF8)
+Write-Host "Created WalletDailyDigestJob.cs"
 
 # =====================================================================
-# 3. Rate Limiting
+# 3. Rate Limiting Options
 # =====================================================================
 
 $rateLimitOptions = @'

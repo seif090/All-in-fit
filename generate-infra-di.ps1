@@ -188,6 +188,15 @@ public static class DependencyInjection
         // ========== Maps (OpenStreetMap / Nominatim / OSRM / Overpass) ==========
         services.AddScoped<IMapService, OpenStreetMapService>();
 
+        // ========== Realtime (SignalR) ==========
+        services.AddRealtimeServices();
+
+        // ========== Rate Limiting ==========
+        services.AddRateLimiting(configuration);
+
+        // ========== Hangfire Background Jobs ==========
+        services.AddHangfireJobs(configuration);
+
         return services;
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AllInFit.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af51af4c20340838e59795047ac252c093a75794")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9652ee039b63af8c2a5a76d447e819ae40fc539")]
 [assembly: System.Reflection.AssemblyProductAttribute("AllInFit.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AllInFit.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

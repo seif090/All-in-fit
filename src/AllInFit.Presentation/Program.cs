@@ -1,6 +1,8 @@
 ﻿using AllInFit.Application;
 using AllInFit.Infrastructure;
+using AllInFit.Infrastructure.Jobs;
 using AllInFit.Infrastructure.Logging;
+using AllInFit.Infrastructure.Realtime;
 using AllInFit.Persistence;
 using AllInFit.Persistence.Data;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -53,9 +55,18 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
+app.UseRateLimiter();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+// SignalR hubs (live notifications + chat)
+app.MapHub<NotificationsHub>(NotificationsHub.HubPath);
+app.MapHub<ChatHub>(ChatHub.HubPath);
+
+// Hangfire dashboard + recurring background jobs (config-gated)
+app.UseHangfireDashboardJobs(builder.Configuration);
 
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
