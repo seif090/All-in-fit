@@ -60,7 +60,7 @@
           "dependencies": {
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.10.0, )"
+              "version": "[11.11.0, )"
             },
             "Mapster": {
               "target": "Package",

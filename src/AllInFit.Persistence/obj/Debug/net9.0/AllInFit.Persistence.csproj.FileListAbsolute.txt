@@ -19,3 +19,4 @@ C:\Users\seaif\Desktop\All in fit\src\AllInFit.Persistence\obj\Debug\net9.0\AllI
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Persistence\obj\Debug\net9.0\ref\AllInFit.Persistence.dll
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Persistence\bin\Debug\net9.0\AllInFit.Persistence.runtimeconfig.json
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Persistence\obj\Debug\net9.0\AllInFit.Persistence.genruntimeconfig.cache
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Persistence\obj\Debug\net9.0\AllInFit.Persistence.sourcelink.json

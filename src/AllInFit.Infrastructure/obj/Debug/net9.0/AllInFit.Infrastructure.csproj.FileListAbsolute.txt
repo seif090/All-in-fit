@@ -17,3 +17,4 @@ C:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure\obj\Debug\net9.0\A
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure\obj\Debug\net9.0\refint\AllInFit.Infrastructure.dll
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure\obj\Debug\net9.0\AllInFit.Infrastructure.pdb
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure\obj\Debug\net9.0\ref\AllInFit.Infrastructure.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Infrastructure\obj\Debug\net9.0\AllInFit.Infrastructure.sourcelink.json

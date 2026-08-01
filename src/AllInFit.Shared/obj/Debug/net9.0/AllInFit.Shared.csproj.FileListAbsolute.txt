@@ -9,3 +9,4 @@ C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\refint\AllInFit.Shared.dll
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.pdb
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\ref\AllInFit.Shared.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Shared\obj\Debug\net9.0\AllInFit.Shared.sourcelink.json

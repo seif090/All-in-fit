@@ -10,3 +10,4 @@ C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\refint\Al
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.pdb
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\ref\AllInFit.Domain.dll
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.csproj.AssemblyReference.cache
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Domain\obj\Debug\net9.0\AllInFit.Domain.sourcelink.json

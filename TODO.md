@@ -27,44 +27,46 @@
 - [x] Map contracts (IMapService)
 - [x] Shared DTOs (PagedResult, PaginationRequest)
 
-## Phase 2 — Domain Layer
-- [ ] Base classes (BaseEntity, AuditableEntity, SoftDelete, ValueObject, DomainEvent)
-- [ ] Identity & Auth aggregates (User, RefreshToken, Session, UserDevice, Role, Permission)
-- [ ] Gym aggregates (Gym, GymBranch, GymOwner, GymMembership, GymSchedule)
-- [ ] Fitness Professional aggregates (Trainer, TrainerCertificate, TrainerAvailability, Doctor, DoctorSpecialty, Nutritionist)
-- [ ] Workout aggregates (WorkoutProgram, WorkoutCategory, Exercise, ExerciseLibrary)
-- [ ] Nutrition aggregates (MealPlan, Recipe)
-- [ ] Marketplace aggregates (Product, Brand, Cart, Wishlist, Order, OrderItem, Payment, Coupon)
-- [ ] Wallet aggregates (Wallet, WalletTransaction)
-- [ ] Appointments aggregate (Appointment)
-- [ ] Reviews aggregate (Review, Rating)
-- [ ] Notification aggregate (Notification, NotificationTemplate)
-- [ ] Chat aggregates (Chat, ChatMessage)
-- [ ] Community aggregates (Community, Post, Comment, Like)
-- [ ] Gamification aggregates (Challenge, LeaderboardEntry, Achievement, Badge, RewardPoint, Referral)
-- [ ] CRM aggregate (CrmCustomer)
-- [ ] CMS aggregate (CmsContent, Setting)
-- [ ] File aggregate (StoredFile)
-- [ ] Domain specifications
+## Phase 2 — Domain Layer ✓
+- [x] Base classes (BaseEntity, AuditableEntity, SoftDelete, ValueObject, DomainEvent)
+- [x] Identity & Auth aggregates (User, RefreshToken, Session, UserDevice, Role, Permission)
+- [x] Gym aggregates (Gym, GymBranch, GymOwner, GymMembership, GymSchedule)
+- [x] Fitness Professional aggregates (Trainer, TrainerCertificate, TrainerAvailability, Doctor, DoctorSpecialty, Nutritionist)
+- [x] Workout aggregates (WorkoutProgram, WorkoutCategory, Exercise, ExerciseLibrary)
+- [x] Nutrition aggregates (MealPlan, Recipe)
+- [x] Marketplace aggregates (Product, Brand, Cart, Wishlist, Order, OrderItem, Payment, Coupon)
+- [x] Wallet aggregates (Wallet, WalletTransaction)
+- [x] Appointments aggregate (Appointment)
+- [x] Reviews aggregate (Review, Rating)
+- [x] Notification aggregate (Notification, NotificationTemplate)
+- [x] Chat aggregates (Chat, ChatMessage)
+- [x] Community aggregates (Community, Post, Comment, Like)
+- [x] Gamification aggregates (Challenge, LeaderboardEntry, Achievement, Badge, RewardPoint, Referral)
+- [x] CRM aggregate (CrmCustomer)
+- [x] CMS aggregate (CmsContent, Setting)
+- [x] File aggregate (StoredFile)
+- [x] Domain specifications
 
-## Phase 3 — Persistence Layer
-- [ ] DbContext (all DbSets, query filters for soft delete)
-- [ ] Entity configurations (Fluent API — keys, indexes, FKs, constraints, concurrency)
-- [ ] Repository pattern (IGenericRepository, Specification)
-- [ ] UnitOfWork
-- [ ] EF interceptors (audit, soft delete)
+## Phase 3 — Persistence Layer ✓
+- [x] DbContext (all DbSets, query filters for soft delete)
+- [x] Entity configurations (Fluent API — keys, indexes, FKs, constraints, concurrency)
+- [x] Repository pattern (IGenericRepository, Specification)
+- [x] UnitOfWork
+- [x] EF interceptors (audit, soft delete)
 - [ ] Migrations
 - [ ] Seed data (roles, permissions, admin, reference data)
 - [ ] Database schema scripts (views, SPs, functions, triggers)
 
-## Phase 4 — Application Layer
-- [ ] DTOs + mapping profiles (Mapster/AutoMapper)
-- [ ] Validators (FluentValidation) for all commands
-- [ ] CQRS Commands + Handlers (all modules)
-- [ ] CQRS Queries + Handlers (all modules)
-- [ ] MediatR pipelines (validation, logging, transaction, caching, performance)
-- [ ] Auth services (JWT, refresh rotation, OTP, Google, sessions)
-- [ ] Application settings (Options pattern)
+## Phase 4 — Application Layer ✓
+- [x] DTOs (Login, Register, Token, Pagination)
+- [x] Validators (FluentValidation via pipeline)
+- [x] CQRS Commands + Handlers (Auth, Gym, User)
+- [x] CQRS Queries + Handlers (Gym, User)
+- [x] MediatR pipelines (ValidationBehavior, LoggingBehavior, TransactionBehavior)
+- [x] Ports interfaces (IUnitOfWork, IGenericRepository)
+- [x] Application DI registration
+- [ ] Auth services (JWT, refresh rotation, OTP, Google, sessions) — in Infrastructure
+- [ ] Application settings (Options pattern) — in Infrastructure
 
 ## Phase 5 — Infrastructure Layer
 - [ ] Serilog setup (files, console, seq)

@@ -15,3 +15,4 @@ C:\Users\seaif\Desktop\All in fit\src\AllInFit.Application\obj\Debug\net9.0\AllI
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Application\obj\Debug\net9.0\refint\AllInFit.Application.dll
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Application\obj\Debug\net9.0\AllInFit.Application.pdb
 C:\Users\seaif\Desktop\All in fit\src\AllInFit.Application\obj\Debug\net9.0\ref\AllInFit.Application.dll
+C:\Users\seaif\Desktop\All in fit\src\AllInFit.Application\obj\Debug\net9.0\AllInFit.Application.sourcelink.json
