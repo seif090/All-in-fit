@@ -28,6 +28,7 @@ public sealed class ResetPasswordCommandHandler : IRequestHandler<ResetPasswordC
             return Result.Failure(new Error("Auth.InvalidResetToken", "Invalid or expired reset code", ErrorType.Unauthorized));
 
         user.UpdatePassword(_passwordHasher.HashPassword(request.NewPassword));
+        user.SetOtp(Guid.NewGuid().ToString("N"), DateTime.UtcNow.AddSeconds(-1));
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return Result.Success();

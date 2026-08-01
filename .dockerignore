@@ -1,0 +1,14 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/TestResults/
+**/*.user
+**/*.suo
+**/*.cache
+.git/
+.github/
+docs/
+tests/
+api-out.log
+api-err.log

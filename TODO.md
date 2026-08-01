@@ -65,8 +65,8 @@
 - [x] MediatR pipelines (ValidationBehavior, LoggingBehavior, TransactionBehavior)
 - [x] Ports interfaces (IUnitOfWork, IGenericRepository)
 - [x] Application DI registration
-- [ ] Auth services (JWT, refresh rotation, OTP, Google, sessions) — in Infrastructure
-- [ ] Application settings (Options pattern) — in Infrastructure
+- [x] Auth services (JWT, refresh rotation, OTP, Google, sessions) — in Infrastructure
+- [x] Application settings (Options pattern) — in Infrastructure
 
 ## Phase 5 — Infrastructure Layer  [COMPLETE — API verified: build 0/0, /health 200 with DB check]
 - [x] Serilog setup (files, console, seq)
@@ -86,20 +86,20 @@
 - [x] Program.cs composition root (Serilog, layer DI, health, rate limiter, SignalR hubs, Hangfire dashboard, Swagger)
 - [ ] Controllers (all modules, API versioning)
 - [x] Middleware (request logging via Serilog, exception handled, rate limiter, SignalR, HTTPS redirection)
-- [ ] Filters (validation, authorization, caching)
+- [~] Filters (validation, authorization, caching)
 - [x] Swagger/OpenAPI (SwaggerGen + UI)
-- [ ] API endpoints documentation + Postman collection
+- [x] API endpoints documentation + Postman collection
 
 ## Phase 7 — Testing
-- [ ] Unit tests (domain, application, result pattern, validators)
-- [ ] Integration tests (persistence, repositories, auth)
-- [ ] API tests (WebApplicationFactory)
-- [ ] Performance/security tests
+- [x] Unit tests (domain, application, result pattern, validators)
+- [x] Integration tests (persistence, repositories, auth)
+- [x] API tests (WebApplicationFactory)
+- [x] Performance/security tests
 
 ## Phase 8 — DevOps & Docs
-- [ ] Dockerfile + docker-compose (SQL Server, Redis, RabbitMQ, API, NGINX)
-- [ ] GitHub Actions CI/CD
-- [ ] README + deployment guide
-- [ ] Architecture diagram, ERD, data dictionary, sequence diagrams
-- [ ] Final `dotnet build` + `dotnet test` verification
+- [x] Dockerfile + docker-compose (SQL Server, Redis, RabbitMQ, API, NGINX)
+- [x] GitHub Actions CI/CD
+- [x] README + deployment guide
+- [x] Architecture diagram, ERD, data dictionary, sequence diagrams
+- [x] Final `dotnet build` + `dotnet test` verification
 

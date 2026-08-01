@@ -19,6 +19,9 @@ $content = @'
     "SecretKey": "AllInFit-SuperSecret-Key-Minimum-32-Characters-Long!",
     "AccessTokenExpirationMinutes": 15,
     "RefreshTokenExpirationDays": 7
+  },
+  "GoogleAuth": {
+    "ClientId": ""
   }
 }
 '@

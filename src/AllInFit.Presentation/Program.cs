@@ -10,10 +10,12 @@ using AllInFit.Persistence.Data;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using AllInFit.Presentation.Middleware;
+using AllInFit.Presentation.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +29,14 @@ builder.Host.UseSerilog((context, services, configuration) =>
 });
 LoggerSetup.ConfigureLogger();
 
-builder.Services.AddControllers();
+builder.Services.AddScoped<ModelStateValidationFilter>();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.AddService<ModelStateValidationFilter>();
+}).ConfigureApiBehaviorOptions(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 builder.Services.AddEndpointsApiExplorer();
 
 // ========== API Versioning ==========
@@ -147,7 +156,7 @@ app.UseGlobalExceptionHandler();
 app.UseResponseCompression();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Testing"))
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
@@ -160,10 +169,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Initialize database (apply migrations + seed data)
-using (var scope = app.Services.CreateScope())
+// Initialize database (apply migrations + seed data) unless tests have replaced the persistence stack.
+if (!app.Environment.IsEnvironment("Testing"))
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    using var scope = app.Services.CreateScope();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
     await DbInitializer.InitializeAsync(app.Services, logger);
 }

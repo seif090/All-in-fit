@@ -49,4 +49,10 @@ public abstract class ApiControllerBase : ControllerBase
     protected Guid? CurrentUserId =>
         Guid.TryParse(User.FindFirst("sub")?.Value ?? User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value,
             out var id) ? id : null;
+
+    protected string? CurrentDeviceId => Request.Headers["X-Device-Id"].FirstOrDefault();
+
+    protected string? CurrentUserAgent => Request.Headers["User-Agent"].FirstOrDefault();
+
+    protected string? CurrentIpAddress => HttpContext.Connection.RemoteIpAddress?.ToString();
 }

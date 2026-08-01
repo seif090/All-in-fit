@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AllInFit.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1db08e0f99023f9c9c579bbda2d1a2dba92eac04")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b992cae039de7af0c3fb4b381ed65db043862b3f")]
 [assembly: System.Reflection.AssemblyProductAttribute("AllInFit.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AllInFit.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

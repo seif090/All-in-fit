@@ -3,6 +3,12 @@ $path = "c:\Users\seaif\Desktop\All in fit\src\AllInFit.Presentation\appsettings
 $content = @'
 {
   "Serilog": {
+    "Using": [
+      "Serilog.Sinks.Console",
+      "Serilog.Sinks.File",
+      "Serilog.Enrichers.Thread",
+      "Serilog.Enrichers.Environment"
+    ],
     "MinimumLevel": {
       "Default": "Information",
       "Override": {
@@ -35,7 +41,9 @@ $content = @'
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=AllInFit;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true"
+    "DefaultConnection": "Server=localhost;Database=AllInFit;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true",
+    "Redis": "localhost:6379",
+    "RabbitMQ": "amqp://guest:guest@localhost:5672"
   },
   "Jwt": {
     "Issuer": "AllInFit",
@@ -45,7 +53,97 @@ $content = @'
     "RefreshTokenExpirationDays": 7
   },
   "Cache": {
-    "Enabled": false
+    "Enabled": false,
+    "RedisConnectionString": "localhost:6379",
+    "DefaultExpirationMinutes": 30
+  },
+  "EventBus": {
+    "Enabled": false,
+    "HostName": "localhost",
+    "Port": 5672,
+    "UserName": "guest",
+    "Password": "guest",
+    "ExchangeName": "allinfit.events",
+    "QueuePrefix": "allinfit",
+    "VirtualHost": "/"
+  },
+  "Storage": {
+    "Provider": "Local",
+    "Local": {
+      "RootPath": "wwwroot/uploads",
+      "BaseUrl": "/uploads"
+    },
+    "Cloudinary": {
+      "CloudName": "",
+      "ApiKey": "",
+      "ApiSecret": ""
+    },
+    "AwsS3": {
+      "AccessKey": "",
+      "SecretKey": "",
+      "Bucket": "",
+      "Region": "eu-west-1"
+    },
+    "AzureBlob": {
+      "ConnectionString": "",
+      "ContainerName": "allinfit"
+    }
+  },
+  "Payment": {
+    "Provider": "Stripe",
+    "Stripe": {
+      "SecretKey": "",
+      "PublishableKey": "",
+      "WebhookSecret": "",
+      "Currency": "usd"
+    },
+    "Paymob": {
+      "ApiKey": "",
+      "IntegrationId": 0,
+      "IframeId": 0,
+      "HmacSecret": "",
+      "Currency": "EGP"
+    },
+    "Fawry": {
+      "MerchantCode": "",
+      "SecretKey": "",
+      "BaseUrl": "https://www.atfawry.com/ECommerceWeb/Fawry/payments/charge",
+      "Currency": "EGP"
+    },
+    "Wallet": {
+      "Currency": "USD"
+    }
+  },
+  "Maps": {
+    "NominatimBaseUrl": "https://nominatim.openstreetmap.org",
+    "OSRMBaseUrl": "https://router.project-osrm.org",
+    "OverpassBaseUrl": "https://overpass-api.de/api/interpreter",
+    "UserAgent": "AllInFit/1.0",
+    "Email": "",
+    "MaxRadiusInMeters": 5000
+  },
+  "Email": {
+    "Enabled": false,
+    "Host": "localhost",
+    "Port": 587,
+    "UseSsl": true,
+    "UserName": "",
+    "Password": "",
+    "From": "noreply@allinfit.com",
+    "FromName": "All In Fit"
+  },
+  "Sms": {
+    "Enabled": false,
+    "Provider": "Twilio",
+    "AccountSid": "",
+    "AuthToken": "",
+    "FromNumber": ""
+  },
+  "Push": {
+    "Enabled": false,
+    "ServiceAccountPath": "",
+    "ServiceAccountJson": "",
+    "AppName": "allinfit"
   },
   "Hangfire": {
     "Enabled": false,
@@ -58,9 +156,12 @@ $content = @'
     "PermitLimit": 100,
     "WindowSeconds": 60,
     "QueueLimit": 10
+  },
+  "GoogleAuth": {
+    "ClientId": ""
   }
 }
 '@
 [System.IO.File]::WriteAllText($path, $content.TrimStart(), [System.Text.Encoding]::UTF8)
-Write-Host "appsettings.json updated with Serilog console+file sinks"
+Write-Host "appsettings.json updated with Serilog and infrastructure defaults"
 

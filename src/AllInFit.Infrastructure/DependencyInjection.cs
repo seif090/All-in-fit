@@ -26,6 +26,7 @@ public static class DependencyInjection
         services.Configure<StorageOptions>(configuration.GetSection(StorageOptions.SectionName));
         services.Configure<PaymentOptions>(configuration.GetSection(PaymentOptions.SectionName));
         services.Configure<MapServiceOptions>(configuration.GetSection(MapServiceOptions.SectionName));
+        services.Configure<GoogleAuthOptions>(configuration.GetSection(GoogleAuthOptions.SectionName));
         services.Configure<EventBusOptions>(configuration.GetSection(EventBusOptions.SectionName));
         services.Configure<EmailOptions>(configuration.GetSection(EmailOptions.SectionName));
         services.Configure<SmsOptions>(configuration.GetSection(SmsOptions.SectionName));
@@ -40,6 +41,8 @@ public static class DependencyInjection
         services.AddScoped<IJwtProvider, JwtProvider>();
         services.AddScoped<IPasswordHasher, Pbkdf2PasswordHasher>();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IGoogleIdentityVerifier, GoogleIdentityVerifier>();
+        services.AddScoped<IAuthSessionService, AuthSessionService>();
 
         // ========== Caching ==========
         services.AddMemoryCache();

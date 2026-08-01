@@ -7920,6 +7920,7 @@
       "Azure.Storage.Blobs >= 12.23.0",
       "CloudinaryDotNet >= 1.26.1",
       "FirebaseAdmin >= 3.1.0",
+      "Google.Apis.Auth >= 1.68.0",
       "Hangfire.AspNetCore >= 1.8.17",
       "Hangfire.SqlServer >= 1.8.17",
       "MailKit >= 4.17.0",
@@ -7978,8 +7979,8 @@
             "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj": {
               "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj"
             },
-            "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
-              "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
+            "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
+              "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
             }
           }
         }
@@ -8023,6 +8024,10 @@
           "FirebaseAdmin": {
             "target": "Package",
             "version": "[3.1.0, )"
+          },
+          "Google.Apis.Auth": {
+            "target": "Package",
+            "version": "[1.68.0, )"
           },
           "Hangfire.AspNetCore": {
             "target": "Package",

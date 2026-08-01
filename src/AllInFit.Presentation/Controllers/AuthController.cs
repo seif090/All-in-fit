@@ -26,7 +26,11 @@ public sealed class AuthController : ApiControllerBase
             request.Password,
             request.FirstName,
             request.LastName,
-            request.PhoneNumber);
+            request.PhoneNumber,
+            CurrentDeviceId,
+            null,
+            CurrentIpAddress,
+            CurrentUserAgent);
         var result = await _mediator.Send(command, cancellationToken);
         return FromResult(result);
     }
@@ -40,7 +44,38 @@ public sealed class AuthController : ApiControllerBase
             request.Email,
             request.Password,
             request.DeviceId,
-            request.DeviceName);
+            request.DeviceName,
+            CurrentIpAddress,
+            CurrentUserAgent);
+        var result = await _mediator.Send(command, cancellationToken);
+        return FromResult(result);
+    }
+
+    /// <summary>Requests an OTP login code for a phone number.</summary>
+    [HttpPost("otp/request")]
+    [AllowAnonymous]
+    public async Task<IActionResult> RequestOtpLogin(OtpRequest request, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new RequestOtpLoginCommand(request.PhoneNumber), cancellationToken);
+        return FromResult(result);
+    }
+
+    /// <summary>Verifies a phone OTP and issues a token pair.</summary>
+    [HttpPost("otp/verify")]
+    [AllowAnonymous]
+    public async Task<IActionResult> VerifyOtpLogin(OtpVerifyRequest request, CancellationToken cancellationToken)
+    {
+        var command = new VerifyOtpLoginCommand(request.PhoneNumber, request.Code, CurrentDeviceId, null, CurrentIpAddress, CurrentUserAgent);
+        var result = await _mediator.Send(command, cancellationToken);
+        return FromResult(result);
+    }
+
+    /// <summary>Authenticates a Google identity token.</summary>
+    [HttpPost("google")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GoogleLogin(GoogleLoginRequest request, CancellationToken cancellationToken)
+    {
+        var command = new GoogleLoginCommand(request.IdToken, request.DeviceId, request.DeviceName, CurrentIpAddress, CurrentUserAgent);
         var result = await _mediator.Send(command, cancellationToken);
         return FromResult(result);
     }
@@ -81,6 +116,15 @@ public sealed class AuthController : ApiControllerBase
     {
         var command = new VerifyEmailCommand(request.Email, request.Token);
         var result = await _mediator.Send(command, cancellationToken);
+        return FromResult(result);
+    }
+
+    /// <summary>Logs out all devices and sessions for the current user.</summary>
+    [HttpPost("logout-all")]
+    [Authorize]
+    public async Task<IActionResult> LogoutAllDevices(CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new LogoutAllDevicesCommand(CurrentUserId ?? Guid.Empty), cancellationToken);
         return FromResult(result);
     }
 }

@@ -13,6 +13,7 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        var databaseProvider = configuration["Database:Provider"] ?? "SqlServer";
 
         services.AddScoped<AuditInterceptor>();
         services.AddScoped<DomainEventInterceptor>();
@@ -22,12 +23,21 @@ public static class DependencyInjection
             var auditInterceptor = sp.GetRequiredService<AuditInterceptor>();
             var domainEventInterceptor = sp.GetRequiredService<DomainEventInterceptor>();
 
-            options.UseSqlServer(connectionString, sqlOptions =>
+            if (databaseProvider.Equals("Sqlite", StringComparison.OrdinalIgnoreCase))
             {
-                sqlOptions.CommandTimeout(120);
-                sqlOptions.EnableRetryOnFailure(3);
-                sqlOptions.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
-            })
+                options.UseSqlite(connectionString);
+            }
+            else
+            {
+                options.UseSqlServer(connectionString, sqlOptions =>
+                {
+                    sqlOptions.CommandTimeout(120);
+                    sqlOptions.EnableRetryOnFailure(3);
+                    sqlOptions.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
+                });
+            }
+
+            options
             .AddInterceptors(auditInterceptor, domainEventInterceptor);
         });
 

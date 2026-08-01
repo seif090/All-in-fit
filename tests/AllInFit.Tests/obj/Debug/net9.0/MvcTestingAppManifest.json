@@ -1,0 +1,8 @@
+{
+  "AllInFit.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Application",
+  "AllInFit.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain",
+  "AllInFit.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Infrastructure",
+  "AllInFit.Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Persistence",
+  "AllInFit.Presentation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Presentation",
+  "AllInFit.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared"
+}

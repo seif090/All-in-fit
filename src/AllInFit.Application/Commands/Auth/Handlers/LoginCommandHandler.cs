@@ -13,17 +13,20 @@ public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, Result<T
     private readonly IUnitOfWork _unitOfWork;
     private readonly IPasswordHasher _passwordHasher;
     private readonly ITokenService _tokenService;
+    private readonly IAuthSessionService _authSessionService;
     private readonly ILogger<LoginCommandHandler> _logger;
 
     public LoginCommandHandler(
         IUnitOfWork unitOfWork,
         IPasswordHasher passwordHasher,
         ITokenService tokenService,
+        IAuthSessionService authSessionService,
         ILogger<LoginCommandHandler> logger)
     {
         _unitOfWork = unitOfWork;
         _passwordHasher = passwordHasher;
         _tokenService = tokenService;
+        _authSessionService = authSessionService;
         _logger = logger;
     }
 
@@ -61,6 +64,8 @@ public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, Result<T
         };
         var tokenRepo = _unitOfWork.Repository<RefreshToken>();
         await tokenRepo.AddAsync(refreshToken, cancellationToken);
+
+        await _authSessionService.RecordSignInAsync(user, request.DeviceId, request.DeviceName, request.IpAddress, request.UserAgent, cancellationToken);
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 

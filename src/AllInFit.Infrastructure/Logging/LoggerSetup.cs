@@ -14,6 +14,7 @@ public static class LoggerSetup
             .MinimumLevel.Override("System", LogEventLevel.Warning)
             .Enrich.FromLogContext()
             .Enrich.WithThreadId()
+            .Enrich.WithMachineName()
             .Enrich.WithEnvironmentName()
             .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
             .WriteTo.File(

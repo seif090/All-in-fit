@@ -36,8 +36,8 @@
               "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj": {
                 "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj"
               },
-              "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
-                "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
+              "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
+                "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
               }
             }
           }
@@ -202,8 +202,8 @@
               "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj": {
                 "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Domain\\AllInFit.Domain.csproj"
               },
-              "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
-                "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
+              "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
+                "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj"
               }
             }
           }
@@ -247,6 +247,10 @@
             "FirebaseAdmin": {
               "target": "Package",
               "version": "[3.1.0, )"
+            },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.68.0, )"
             },
             "Hangfire.AspNetCore": {
               "target": "Package",
@@ -337,14 +341,14 @@
         }
       }
     },
-    "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
+    "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
+        "projectUniqueName": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
         "projectName": "AllInFit.Shared",
-        "projectPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
+        "projectPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\AllInFit.Shared.csproj",
         "packagesPath": "C:\\Users\\seaif\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\obj\\",
+        "outputPath": "c:\\Users\\seaif\\Desktop\\All in fit\\src\\AllInFit.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
