@@ -53,9 +53,9 @@
 - [x] Repository pattern (IGenericRepository, Specification)
 - [x] UnitOfWork
 - [x] EF interceptors (audit, soft delete)
-- [ ] Migrations
-- [ ] Seed data (roles, permissions, admin, reference data)
-- [ ] Database schema scripts (views, SPs, functions, triggers)
+- [~] Migrations (pending SQL Server connection)
+- [x] Seed data (roles, permissions, admin, reference data)
+- [~] Database schema scripts (views, SPs, functions, triggers) — pending DB connection
 
 ## Phase 4 — Application Layer ✓
 - [x] DTOs (Login, Register, Token, Pagination)
